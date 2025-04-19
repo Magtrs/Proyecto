@@ -326,3 +326,85 @@ footer {
         text-align: left;
     }
 }
+/* === RESPONSIVE DESIGN === */
+
+/* Vista móvil: ajustar el menú lateral */
+@media (max-width: 768px) {
+    #sidebar {
+        position: fixed;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 0;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        z-index: 1000;
+    }
+
+    #sidebar ul {
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    #sidebar li {
+        margin: 0 10px;
+        font-size: 1em;
+        padding: 10px;
+        transform: none;
+    }
+
+    #sidebar:hover {
+        width: 100%;
+    }
+
+    #content {
+        margin-left: 0;
+        padding-top: 80px; /* Espacio para el menú superior */
+        width: 100%;
+    }
+}
+
+/* Imágenes adaptables */
+.section-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Formularios: columnas apiladas */
+@media (max-width: 700px) {
+    .contact-form form {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form form .block {
+        grid-column: auto;
+    }
+}
+
+/* Tipografía adaptable */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 32px;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    li {
+        font-size: 1em;
+    }
+}
+
+/* Evita desbordamiento horizontal */
+body {
+    overflow-x: hidden;
+}
