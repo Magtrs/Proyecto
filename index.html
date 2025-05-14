@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+Html, todavia no hagas nada :) <!DOCTYPE html> 
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xonacatlan</title>
-    <link rel="stylesheet" href="mapa.css">
+    <link rel="icon" href="cecyto.png" type="image/png">
+    <link rel="stylesheet" href="mapa1.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/e89f4d0241.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -13,33 +14,29 @@
     <!-- Menú lateral -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h2 style="color: white;">Menu</h2>
+            <h1>Explora Xonacatlán</h1>
+            <p>Descubre la belleza y cultura de Xonacatlán.</p>
         </div>
         <ul>
             <li><label for="inicio-radio"><i class="fa-solid fa-house"></i> Inicio</label></li>
             <li><label for="mapa-radio"><i class="fa-solid fa-map"></i> Mapa</label></li>
             <li><label for="comentarios-radio"><i class="fa-solid fa-comments"></i> Comentarios</label></li>
             <li><label for="contacto-radio"><i class="fa-solid fa-phone"></i> Contacto</label></li>
-
         </ul>
     </nav>
 
     <input type="radio" name="section" id="inicio-radio" checked>
-    <input type="radio" name="section" id="mapa-radio" checked>
-    <input type="radio" name="section" id="comentarios-radio" checked>
-    <input type="radio" name="section" id="contacto-radio" checked>
+    <input type="radio" name="section" id="mapa-radio">
+    <input type="radio" name="section" id="comentarios-radio">
+    <input type="radio" name="section" id="contacto-radio">
 
     <!-- Contenido principal -->
     <main id="content">
-        <!-- Encabezado -->
-        <header class="header-content">
-            <h1>Explora Xonacatlan</h1>
-            <p>Descubre la belleza y cultura de Xonacatlan.</p>
-        </header>
-
         <!-- Sección de Inicio -->
         <section id="inicio">
-            <h2>Bienvenido</h2>
+            <h2 style="font-family: 'Pacifico', cursive; font-size: 40px;">Bienvenido</h2>
+            <div class="separador">
+            <div class="info">
             <p>
                 Xonacatlán es un nombre náhuatl, que se compone de xonacatl: "cebolla"; tlan: "entre", que significa "Entre las Cebollas".
             </p>
@@ -50,7 +47,6 @@
                 
             <p>Por fortuna aún se conservan los portales del siglo XIX ubicados en la cabecera municipal, así como viejas casonas que se pueden
                 apreciar en las comunidades de Mimiapan y Zolotepec.</p>
-            </p>
             <p><em><strong>Artesanías</strong></em></p>
             <p>El municipio se ha caracterizado por ser un lugar donde se elaboran prendas de lana como: gabanes, cobijas, tapices, gobelinos,
                 fajas, quexquemels, chales, morrales y fajillas. Se realizan también artículos de madera, productos de cuero, de pólvora y  muñecos de peluche.</p>
@@ -59,8 +55,12 @@
                 a Santiago Apóstol el 25 de julio; en Zolotepec a Santa María de la Asunción el 15 de agosto; en Mimiapan a San Miguel Arcángel el
                 29 de septiembre; Xonacatlán (cabecera municipal) a San Francisco de Asís el 4 de octubre; el barrio de San Antonio festeja a San Antonio Padua
                 el 13 de junio y la colonia Emiliano Zapata a la Santa Cruz el 3 de mayo.</p>
-            <img src="Xona.png" alt="Imagen de México" class="section-image">
-            <img src="peluche.png" alt="Imagen de México" class="section-image">
+            </div>
+            <div class="card">
+                <img src="Xona.png" alt="Imagen de México" class="section-image">
+                <img src="peluche.png" alt="Imagen de México" class="section-image">
+            </div>
+            </div>
         </section>
 
         <!-- Sección del Mapa -->
@@ -79,7 +79,7 @@
 
         <!-- Sección de Comentarios -->
         <section id="comentarios">
-            <h2>Comentarios</h2>
+            <h2 style="font-family: 'Pacifico', cursive; font-size: 30px;">Comentarios</h2>
             <p>
                 ¡Nos encantaría saber tu opinión! Déjanos tus comentarios sobre esta página o sobre Xonacatlan.
             </p>
@@ -90,11 +90,10 @@
         </section>
 
         <!-- Sección de Contacto -->
-        <!-- Sección de Contacto -->
         <section id="contacto">
             <div class="contact-wrapper">
                 <div class="contact-form">
-                    <h3>Contactanos</h3>
+                    <h3 style="font-family: 'Pacifico', cursive; font-size: 30px;">Contactanos</h3>
                     <form action="">
                         <p>
                             <label>Nombre</label>
@@ -135,6 +134,7 @@
                 </div>
             </div>
         </section>
+
     </main>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
        
@@ -176,7 +176,7 @@
 
             // Añadimos capa base
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '©️ OpenStreetMap'
+                attribution: '© OpenStreetMap'
             }).addTo(map);
 
             // Forzamos el redimensionamiento
@@ -192,11 +192,11 @@
                 .openPopup();
         }
         // Cargar ubicaciones desde PHP
-fetch('fetch_locations.php')
-    .then(response => response.json())
-    .then(locations => {
-        const markers = L.layerGroup();
-        locations.forEach(location => {
+        fetch('fetch_locations.php')
+        .then(response => response.json())
+        .then(locations => {
+            const markers = L.layerGroup();
+            locations.forEach(location => {
             const marker = L.marker([19.4101, -99.5440]) // Puedes ajustar las coordenadas según tu mapa
                 .bindPopup(`<b>${location.name}</b><br>${location.description}<br>${location.address}`);
             markers.addLayer(marker);
