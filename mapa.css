@@ -1,6 +1,14 @@
-/* ====================
-   VARIABLES Y ESTILOS GENERALES
-   ==================== */
+:root {
+  --color-acento: #1abc9c;
+  --color-acento-oscuro: #16a085;
+  --color-fondo-seccion: rgb(255, 253, 225);
+  --color-borde: #d63031;
+  --color-texto: #333;
+  --color-blanco: #fff;
+  --color-negro: #000;
+  --fuente-titulo: 'Pacifico', cursive;
+  --fuente-base: 'Roboto', sans-serif;
+}
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
