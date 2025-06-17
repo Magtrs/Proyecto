@@ -1,223 +1,451 @@
-Html, todavia no hagas nada :) <!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xonacatlan</title>
-    <link rel="icon" href="cecyto.png" type="image/png">
-    <link rel="stylesheet" href="mapa1.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/e89f4d0241.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <title>Turismo Xonacatlán | Descubre Nuestros Encantos</title>
+    <meta name="description" content="Descubre los atractivos turísticos de Xonacatlán. Iglesias coloniales, artesanías únicas y fiestas tradicionales.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="img/escudo.png" type="image/png">
+    
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Estilos principales -->
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    <!-- Menú lateral -->
-    <nav id="sidebar">
-        <div class="sidebar-header">
-            <h1>Explora Xonacatlán</h1>
-            <p>Descubre la belleza y cultura de Xonacatlán.</p>
+    <!-- Barra superior -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-info">
+                <span><i class="fas fa-phone-alt"></i> (729) 830 0340</span>
+                <span><i class="fas fa-map-marker-alt"></i> Xonacatlán, México</span>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
-        <ul>
-            <li><label for="inicio-radio"><i class="fa-solid fa-house"></i> Inicio</label></li>
-            <li><label for="mapa-radio"><i class="fa-solid fa-map"></i> Mapa</label></li>
-            <li><label for="comentarios-radio"><i class="fa-solid fa-comments"></i> Comentarios</label></li>
-            <li><label for="contacto-radio"><i class="fa-solid fa-phone"></i> Contacto</label></li>
-        </ul>
-    </nav>
+    </div>
 
-    <input type="radio" name="section" id="inicio-radio" checked>
-    <input type="radio" name="section" id="mapa-radio">
-    <input type="radio" name="section" id="comentarios-radio">
-    <input type="radio" name="section" id="contacto-radio">
-
-    <!-- Contenido principal -->
-    <main id="content">
-        <!-- Sección de Inicio -->
-        <section id="inicio">
-            <h2 style="font-family: 'Pacifico', cursive; font-size: 40px;">Bienvenido</h2>
-            <div class="separador">
-            <div class="info">
-            <p>
-                Xonacatlán es un nombre náhuatl, que se compone de xonacatl: "cebolla"; tlan: "entre", que significa "Entre las Cebollas".
-            </p>
-            <p><em><strong>Monumentos Históricos</strong></em></p>
-            <p>Las iglesias dedicadas a San Francisco de Asís en la cabecera municipal, la de Santa María de la Asunción en Zolotepec, La 
-                de San Miguel Arcángel en Mimiapan y la de Santiago Apóstol en Tejocotillos son monumentos históricos, patrimonio del municipio.
-            </p>
-                
-            <p>Por fortuna aún se conservan los portales del siglo XIX ubicados en la cabecera municipal, así como viejas casonas que se pueden
-                apreciar en las comunidades de Mimiapan y Zolotepec.</p>
-            <p><em><strong>Artesanías</strong></em></p>
-            <p>El municipio se ha caracterizado por ser un lugar donde se elaboran prendas de lana como: gabanes, cobijas, tapices, gobelinos,
-                fajas, quexquemels, chales, morrales y fajillas. Se realizan también artículos de madera, productos de cuero, de pólvora y  muñecos de peluche.</p>
-            <p><em><strong>Fiestas Populares</strong></em></p> 
-            <p>En Santa María Zolotepec, en los meses de febrero o marzo se realiza un carnaval. Santiago Tejocotillos festeja
-                a Santiago Apóstol el 25 de julio; en Zolotepec a Santa María de la Asunción el 15 de agosto; en Mimiapan a San Miguel Arcángel el
-                29 de septiembre; Xonacatlán (cabecera municipal) a San Francisco de Asís el 4 de octubre; el barrio de San Antonio festeja a San Antonio Padua
-                el 13 de junio y la colonia Emiliano Zapata a la Santa Cruz el 3 de mayo.</p>
-            </div>
-            <div class="card">
-                <img src="Xona.png" alt="Imagen de México" class="section-image">
-                <img src="peluche.png" alt="Imagen de México" class="section-image">
-            </div>
-            </div>
-        </section>
-
-        <!-- Sección del Mapa -->
-        <section id="mapa">
-            <h2>Mapa Interactivo</h2>
-
-            <div class="search-container">
-                <input type="text" id="search-input" placeholder="Buscar ubicaciones..." />
-                <button id="search-button">Buscar</button>
-            </div>
-            <div class="map-container">
-                <div id="map"></div>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="img/escudo.png" alt="Escudo de Xonacatlán" class="logo">
+                <div class="titles">
+                    <h1>Turismo Xonacatlán</h1>
+                    <p class="motto">"Descubre nuestra historia y tradición"</p>
                 </div>
             </div>
-        </section>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#inicio" class="nav-link active"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="#atractivos" class="nav-link"><i class="fas fa-umbrella-beach"></i> Atractivos</a></li>
+                    <li><a href="#artesanias" class="nav-link"><i class="fas fa-tshirt"></i> Artesanías</a></li>
+                    <li><a href="#fiestas" class="nav-link"><i class="fas fa-calendar-alt"></i> Fiestas</a></li>
+                    <li><a href="#galeria" class="nav-link"><i class="fas fa-camera"></i> Galería</a></li>
+                    <li><a href="#contacto" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+                </ul>
+            </nav>
+            
+            <button class="menu-toggle" aria-label="Menú">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
 
-        <!-- Sección de Comentarios -->
-        <section id="comentarios">
-            <h2 style="font-family: 'Pacifico', cursive; font-size: 30px;">Comentarios</h2>
-            <p>
-                ¡Nos encantaría saber tu opinión! Déjanos tus comentarios sobre esta página o sobre Xonacatlan.
-            </p>
-            <form class="comment-form">
-                <textarea placeholder="Escribe tu comentario aquí..." rows="5"></textarea>
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
+    <!-- Hero Banner -->
+    <section class="hero" style="background-image: url('img/hero-turismo.jpg')">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2>Bienvenidos a Xonacatlán</h2>
+            <p>Un pueblo lleno de cultura, tradición y belleza natural</p>
+            <a href="#atractivos" class="btn btn-primary">Explorar</a>
+        </div>
+    </section>
 
-        <!-- Sección de Contacto -->
-        <section id="contacto">
-            <div class="contact-wrapper">
+    <!-- Sección de bienvenida -->
+    <section id="inicio" class="section welcome-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Descubre</span>
+                <h2 class="section-title">Xonacatlán</h2>
+                <div class="divider"></div>
+                <p class="section-description">Xonacatlán, que en náhuatl significa "Entre las cebollas", te invita a conocer su rico patrimonio cultural</p>
+            </div>
+            
+            <div class="floating-cards">
+                <div class="floating-card">
+                    <div class="card-icon">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <h3>Patrimonio Colonial</h3>
+                    <p>Descubre nuestras iglesias históricas del siglo XVII y arquitectura tradicional.</p>
+                </div>
+                
+                <div class="floating-card">
+                    <div class="card-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Artesanías Únicas</h3>
+                    <p>Conoce los textiles de lana elaborados con técnicas ancestrales.</p>
+                </div>
+                
+                <div class="floating-card">
+                    <div class="card-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Fiestas Tradicionales</h3>
+                    <p>Vive nuestras coloridas festividades llenas de folklore y tradición.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de atractivos turísticos -->
+    <section id="atractivos" class="section attractions-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Conoce</span>
+                <h2 class="section-title">Nuestros Atractivos</h2>
+                <div class="divider"></div>
+                <p class="section-description">Descubre los lugares que hacen de Xonacatlán un destino único</p>
+            </div>
+            
+            <div class="attractions-grid">
+                <div class="attraction-card large-card" style="background-image: url('img/iglesia-san-francisco.jpg')">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3>Iglesia San Francisco de Asís</h3>
+                        <p>Monumento histórico del siglo XVII con impresionante arquitectura colonial.</p>
+                        <div class="card-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Plaza Principal</span>
+                            <span><i class="fas fa-clock"></i> Abierto todos los días</span>
+                        </div>
+                        <a href="#" class="btn btn-small">Ver más</a>
+                    </div>
+                </div>
+                
+                <div class="attraction-card" style="background-image: url('img/portales.jpg')">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3>Portales Históricos</h3>
+                        <p>Arquitectura tradicional del siglo XIX en el centro de Xonacatlán.</p>
+                    </div>
+                </div>
+                
+                <div class="attraction-card" style="background-image: url('img/naturaleza.jpg')">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3>Áreas Naturales</h3>
+                        <p>Paisajes que invitan al ecoturismo y la contemplación.</p>
+                    </div>
+                </div>
+                
+                <div class="attraction-card" style="background-image: url('img/museo.jpg')">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <h3>Museo Comunitario</h3>
+                        <p>Exhibición de artefactos históricos y culturales de la región.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de artesanías -->
+    <section id="artesanias" class="section crafts-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Nuestras</span>
+                <h2 class="section-title">Artesanías</h2>
+                <div class="divider"></div>
+                <p class="section-description">Productos tradicionales elaborados con técnicas ancestrales</p>
+            </div>
+            
+            <div class="crafts-grid">
+                <div class="craft-card">
+                    <img src="img/textiles.jpg" alt="Textiles de lana">
+                    <h3>Textiles de Lana</h3>
+                    <p>Gabanes, cobijas y tapices elaborados a mano con lana natural.</p>
+                    <div class="craft-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Talleres en Zolotepec</span>
+                    </div>
+                </div>
+                
+                <div class="craft-card">
+                    <img src="img/prendas.jpg" alt="Prendas tradicionales">
+                    <h3>Prendas Tradicionales</h3>
+                    <p>Quexquémets, chales y fajas con diseños auténticos.</p>
+                    <div class="craft-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Mercado Artesanal</span>
+                    </div>
+                </div>
+                
+                <div class="craft-card">
+                    <img src="img/munecos.jpg" alt="Muñecos de peluche">
+                    <h3>Muñecos de Peluche</h3>
+                    <p>Adorables figuras artesanales que son perfectas como recuerdo.</p>
+                    <div class="craft-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Talleres familiares</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="crafts-info">
+                <h3><i class="fas fa-store"></i> Dónde comprar</h3>
+                <p>Visita nuestro Mercado Artesanal los fines de semana en la Plaza Principal o los talleres familiares en las comunidades de Zolotepec y Mimiapan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de fiestas tradicionales -->
+    <section id="fiestas" class="section festivals-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Vive</span>
+                <h2 class="section-title">Fiestas Tradicionales</h2>
+                <div class="divider"></div>
+                <p class="section-description">Celebraciones llenas de color, música y tradición</p>
+            </div>
+            
+            <div class="festivals-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Febrero/Marzo</div>
+                    <div class="timeline-content">
+                        <h3>Carnaval de Zolotepec</h3>
+                        <p>Festividad con danzantes tradicionales, música y trajes coloridos.</p>
+                        <div class="timeline-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Santa María Zolotepec</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">25 Julio</div>
+                    <div class="timeline-content">
+                        <h3>Fiesta de Santiago Apóstol</h3>
+                        <p>Celebración religiosa con procesiones, música y comida tradicional.</p>
+                        <div class="timeline-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Santiago Tejocotillos</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">4 Octubre</div>
+                    <div class="timeline-content">
+                        <h3>Fiesta de San Francisco</h3>
+                        <p>Celebración patronal con misas, eventos culturales y pirotecnia.</p>
+                        <div class="timeline-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Cabecera Municipal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de galería -->
+    <section id="galeria" class="section gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Explora</span>
+                <h2 class="section-title">Galería Fotográfica</h2>
+                <div class="divider"></div>
+                <p class="section-description">Imágenes que capturan la esencia de Xonacatlán</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" style="background-image: url('img/galeria1.jpg')"></div>
+                <div class="gallery-item" style="background-image: url('img/galeria2.jpg')"></div>
+                <div class="gallery-item" style="background-image: url('img/galeria3.jpg')"></div>
+                <div class="gallery-item" style="background-image: url('img/galeria4.jpg')"></div>
+                <div class="gallery-item" style="background-image: url('img/galeria5.jpg')"></div>
+                <div class="gallery-item" style="background-image: url('img/galeria6.jpg')"></div>
+            </div>
+            
+            <div class="gallery-cta">
+                <a href="#" class="btn btn-outline">Ver más fotos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de contacto -->
+    <section id="contacto" class="section contact-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Visítanos</span>
+                <h2 class="section-title">Información Turística</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="contact-container">
                 <div class="contact-form">
-                    <h3 style="font-family: 'Pacifico', cursive; font-size: 30px;">Contactanos</h3>
-                    <form action="">
-                        <p>
-                            <label>Nombre</label>
-                            <input type="text" name="fullname" required placeholder="Nombre y Apellido">
-                        </p>
-                        <p>
-                            <label>Correo Electrónico</label>
-                            <input type="email" name="email" required placeholder="Correo electrónico">
-                        </p>
-                        <p>
-                            <label>Telefono</label>
-                            <input type="tel" name="phone" placeholder="Teléfono">
-                        </p>
-                        <p>
-                            <label>Asunto</label>
-                            <input type="text" name="affair">
-                        </p>
-                        <p class="block">
-                           <label>Mensaje</label> 
-                            <textarea name="message" rows="3"></textarea>
-                        </p>
-                        <p class="block">
-                            <button>Enviar</button>
-                        </p>
+                    <form id="form-contacto" class="floating-form">
+                        <h3>Envíanos un mensaje</h3>
+                        
+                        <div class="form-group floating">
+                            <input type="text" id="nombre" name="nombre" required>
+                            <label for="nombre">Nombre completo</label>
+                            <span class="underline"></span>
+                        </div>
+                        
+                        <div class="form-group floating">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Correo electrónico</label>
+                            <span class="underline"></span>
+                        </div>
+                        
+                        <div class="form-group floating">
+                            <select id="asunto" name="asunto" required>
+                                <option value=""></option>
+                                <option>Información turística</option>
+                                <option>Visitas guiadas</option>
+                                <option>Eventos especiales</option>
+                                <option>Otro</option>
+                            </select>
+                            <label for="asunto">Asunto</label>
+                            <span class="underline"></span>
+                        </div>
+                        
+                        <div class="form-group floating">
+                            <textarea id="mensaje" name="mensaje" rows="3" required></textarea>
+                            <label for="mensaje">Mensaje</label>
+                            <span class="underline"></span>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Enviar mensaje
+                        </button>
                     </form>
                 </div>
+                
                 <div class="contact-info">
-                    <h3>Más Información</h3>
-                    <ul>
-                        <li><a href="https://maps.app.goo.gl/xRLz6Vs4gA2L29Xm8"><i class="fa-solid fa-location-dot"></i>Manzana 012, 52067 La Jardona, Méx.</a></li>
-                        <li><i class="fa-solid fa-phone"></i> (729) 830 0340</li>
-                        <li><i class="fa-solid fa-envelope"></i> maganatrs@gmail.com</li>
-                    </ul>
-                    <p>¡Estamos aquí para responder cualquier pregunta que tengas sobre Xonacatlán!</p>
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <div class="info-card">
+                        <h3><i class="fas fa-info-circle"></i> Oficina de Turismo</h3>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Dirección</h4>
+                                <p>Palacio Municipal, Plaza Principal s/n, Centro, Xonacatlán</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Teléfonos</h4>
+                                <p>(729) 830 0340 Ext. 123</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Horario de atención</h4>
+                                <p>Lunes a Viernes: 9:00 - 17:00 hrs</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="map-mini">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.3456789012345!2d-99.54321000000001!3d19.4101!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI0JzM2LjQiTiA5OcKwMzInMzguNCJX!5e0!3m2!1ses!2smx!4v1234567890123!5m2!1ses!2smx" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-container">
+                <div class="newsletter-text">
+                    <h3>¿Planeas visitarnos?</h3>
+                    <p>Recibe información sobre eventos y atractivos turísticos</p>
+                </div>
+                <form class="newsletter-form">
+                    <div class="form-group">
+                        <input type="email" placeholder="Tu correo electrónico" required>
+                        <button type="submit" class="btn btn-primary">Suscribirse</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-logo-col">
+                    <img src="img/escudo-blanco.png" alt="Escudo de Xonacatlán" class="footer-logo">
+                    <h3>Turismo Xonacatlán</h3>
+                    <p>Descubre la belleza de nuestro pueblo</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Enlaces rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                        <li><a href="#atractivos"><i class="fas fa-chevron-right"></i> Atractivos</a></li>
+                        <li><a href="#artesanias"><i class="fas fa-chevron-right"></i> Artesanías</a></li>
+                        <li><a href="#fiestas"><i class="fas fa-chevron-right"></i> Fiestas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Palacio Municipal</li>
+                        <li><i class="fas fa-phone-alt"></i> (729) 830 0340</li>
+                        <li><i class="fas fa-envelope"></i> turismo@xonacatlan.gob.mx</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Turismo Xonacatlán. Todos los derechos reservados.</p>
+                <p><a href="#">Aviso de privacidad</a> | <a href="#">Términos de uso</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón flotante para ir arriba -->
+    <a href="#" class="go-top" aria-label="Ir arriba">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-       
-    <script>
-        // Esperamos a que todo esté cargado
-        window.addEventListener('load', function() {
-            // Inicializamos el mapa cuando la sección de mapa esté visible
-            document.getElementById('mapa-radio').addEventListener('change', function() {
-                if(this.checked) {
-                    initMap();
-                }
-            });
-            
-            // Si la sección de mapa está activa al cargar
-            if(document.getElementById('mapa-radio').checked) {
-                initMap();
-            }
-        });
-
-        function initMap() {
-            // Verificamos si el mapa ya fue inicializado
-            if(document.getElementById('map')._leaflet_map) return;
-            
-            console.log("Inicializando mapa...");
-            
-            // Coordenadas de Xonacatlán
-            const xonacatlanBounds = [
-                [19.370, -99.580], // Esquina suroeste
-                [19.450, -99.500]  // Esquina noreste
-            ];
-
-            // Creamos el mapa
-            const map = L.map('map', {
-                maxBounds: xonacatlanBounds,
-                maxZoom: 18,
-                minZoom: 12,
-                bounceAtZoomLimits: false
-            }).fitBounds(xonacatlanBounds);
-
-            // Añadimos capa base
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap'
-            }).addTo(map);
-
-            // Forzamos el redimensionamiento
-            setTimeout(function() {
-                map.invalidateSize(true);
-                map.fitBounds(xonacatlanBounds);
-                console.log("Mapa redimensionado");
-            }, 100);
-            
-            // Marcador de prueba
-            L.marker([19.4101, -99.5440]).addTo(map)
-                .bindPopup('<b>Xonacatlán</b><br>Municipio del Estado de México.')
-                .openPopup();
-        }
-        // Cargar ubicaciones desde PHP
-        fetch('fetch_locations.php')
-        .then(response => response.json())
-        .then(locations => {
-            const markers = L.layerGroup();
-            locations.forEach(location => {
-            const marker = L.marker([19.4101, -99.5440]) // Puedes ajustar las coordenadas según tu mapa
-                .bindPopup(`<b>${location.name}</b><br>${location.description}<br>${location.address}`);
-            markers.addLayer(marker);
-        });
-        markers.addTo(map);
-
-        // Funcionalidad de búsqueda
-        document.getElementById('search-button').addEventListener('click', () => {
-            const searchInput = document.getElementById('search-input').value.toLowerCase();
-            const foundLocation = locations.find(location =>
-                location.name.toLowerCase().includes(searchInput)
-            );
-
-            if (foundLocation) {
-                alert(`Ubicación encontrada:\nNombre: ${foundLocation.name}\nDescripción: ${foundLocation.description}\nDirección: ${foundLocation.address}`);
-            } else {
-                alert('Ubicación no encontrada.');
-            }
-        });
-    })
-    .catch(error => console.error('Error al cargar ubicaciones:', error));
-    </script> 
+    <script src="js/main.js"></script>
 </body>
 </html>
